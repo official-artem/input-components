@@ -1,1 +1,1 @@
-[StoryBook]('https://official-artem.github.io/input-components/?path=/story/inputannotation--default')
+[StoryBook](https://official-artem.github.io/input-components/?path=/story/inputannotation--default)
