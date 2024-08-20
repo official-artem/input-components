@@ -2,14 +2,18 @@ import { memo } from 'react';
 import styled, { CSSProperties } from 'styled-components';
 import { Measurement } from '../../types/props';
 import { annotationSizeStyles, InputAnnotationSizeProps } from '../../sizes/inputAnnotation';
+import { inputAnnotationStylesDisabled, inputAnnotationStylesError } from '../../stylesMap/inputAnnotation'; 
+import { InputTextSizeProps } from '../../sizes/inputText';
+
+const DEFAULT_SIZE: InputTextSizeProps = 'lg';
 
 interface Props {
 	text: string;
 	width?: CSSProperties['width'];
-	margin?: CSSProperties['margin'];
 	color?: CSSProperties['color'];
 	isError?: boolean;
 	isDisabled?: boolean;
+	fontFamily?: CSSProperties['fontFamily'];
 	fontSize?: Measurement;
 	size?: InputAnnotationSizeProps;
 }
@@ -21,25 +25,23 @@ const InputAnnotationWrapper = styled.div`
 `;
 	
 const InputAnnotationText = styled.p<Props>`
-margin: 0;
-padding: ${({ size }) => annotationSizeStyles[size ?? 'md'].padding};
-font-size: ${({ size }) => annotationSizeStyles[size ?? 'md'].fontSize};
-	color: ${({ color, isError, isDisabled }) => {
-		if (isDisabled)	{
-			return 'gray';
-		}
+	margin: 0;
+	font-family: ${({ fontFamily }) => fontFamily ?? 'sans-serif'};
+	padding: ${({ size }) => annotationSizeStyles[size ?? DEFAULT_SIZE].padding};
+	font-size: ${({ size }) => annotationSizeStyles[size ?? DEFAULT_SIZE].fontSize};
+		color: ${({ color, isError, isDisabled }) => {
+			if (isDisabled)	{
+				return 'gray';
+			}
 
-		if (isError) {
-			return '#D92D20';
-		}
+			if (isError) {
+				return '#D92D20';
+			}
 
-		return color ?? 'black';
-	}};
-	opacity: ${({ isDisabled }) => {
-		if (isDisabled) {
-			return 0.7;
-		}
-	}};
+			return color ?? 'black';
+		}};
+	${({ isError }) => isError && inputAnnotationStylesError}
+	${({ isDisabled }) => isDisabled && inputAnnotationStylesDisabled}
 `;
 
 export default memo(

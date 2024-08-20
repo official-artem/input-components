@@ -7,18 +7,18 @@ import InputText from './components/InputText/InputText';
 
 function App() {
   return (
-    <InputGroup fontFamily='sans-serif' paddingTop={'6rem'} paddingLeft={'6rem'}>
-      <InputLabel title='Email' htmlFor='email' size='xl' icon={Icon} tooltipText='Enter your email' tooltipPosition='bottom' />
+    <InputGroup>
+      <InputLabel title='Email' htmlFor='email' size='lg' icon={Icon} tooltipText='Enter your email' tooltipPosition='right' />
       <InputText 
         placeholder='Enter email'
         size='xl'
         rightIcon={Icon}
         leftIcon={Icon}
         lastIcon={Icon}
-        isError
+        disabled
         id='email'
       />
-      <InputAnnotation text='Please enter a valid email' size='xl' isError />
+      <InputAnnotation text='Please enter a valid email' size='xl' isDisabled />
     </InputGroup>
   )
 }

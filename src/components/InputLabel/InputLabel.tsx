@@ -65,13 +65,9 @@ interface Props {
 	title: string;
 	icon?: string;
 	htmlFor: string;
-	padding?: Measurement;
-	margin?: Measurement;
 	width?: Measurement;
-	height?: Measurement;
 	marginLeft?: Measurement;
 	isError?: boolean;
-	fontSize?: Measurement;
 	fontFamily?: CSSProperties['fontFamily'];
 	size?: InputLabelSizeProps;
 	tooltipText?: string;
@@ -96,13 +92,14 @@ const InputLabelWrapper = styled.div<Omit<Props, 'title' | 'htmlFor'>>`
 
 const Image = styled.img<Omit<Props, 'title' | 'htmlFor'>>`
   -webkit-user-drag: none;
-  pointer-events: none;
+	object-position: center;
+	cursor: help;
 	width: ${({ size }) => labelSizeStyles[size ?? 'md'].iconSize};
 	height: ${({ size }) => labelSizeStyles[size ?? 'md'].iconSize};
 	margin-left: ${({ marginLeft }) => marginLeft ?? '0.5rem'};
 	object-fit: contain;
 
-	&:hover + * {
+	&:hover + span {
     ${({ tooltipText }) => tooltipText && 'visibility: visible;'}
   }
 `;
@@ -111,6 +108,8 @@ const ImageWrapper = styled.div`
 	margin: 0;
 	padding: 0;
 	position: relative;
+	display: flex;
+	align-items: center;
 `;
 
 const Tooltip = styled.span<Omit<Props, 'title' | 'htmlFor'>>`
@@ -118,7 +117,7 @@ const Tooltip = styled.span<Omit<Props, 'title' | 'htmlFor'>>`
   background-color: ${({ tooltipBackground }) => tooltipBackground ?? 'black'};;
   color: ${({ tooltipColor }) => tooltipColor ?? 'white'};
   text-align: center;
-  padding: 5px 0;
+  padding: 5px;
   border-radius: 6px;
   position: absolute;
   z-index: 1;
@@ -138,7 +137,7 @@ export default memo(
 			<InputLabelWrapper {...props}>
 				<InputLabelItem
 					htmlFor={htmlFor}
-					{...props} 
+					{...props}
 				>
 					{title}
 				</InputLabelItem>

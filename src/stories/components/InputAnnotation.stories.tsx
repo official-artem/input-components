@@ -1,22 +1,20 @@
 import { StoryObj, Meta} from '@storybook/react';
-import InputAnnotation from './InputAnnotation';
+import InputAnnotation from '../../components/InputAnnotation/InputAnnotation';
 import { annotationSizeStyles } from '../../sizes/inputAnnotation';
 
-	const meta: Meta<typeof InputAnnotation > = {
+export default {
 	component: InputAnnotation,
-		title: 'InputAnnotation', // Define the category and name for the story
-			argTypes: {
+	title: 'Components/InputAnnotation',
+	argTypes: {
 		size: {
 			control: 'select',
 			options: Object.keys(annotationSizeStyles),
-    },
+		},
 		isError: { control: 'boolean' },
 		isDisabled: { control: 'boolean' },
 		color: { control: 'color' },
 	},
-};
-
-export default meta;
+} as Meta<typeof InputAnnotation>;
 
 type Story = StoryObj<typeof InputAnnotation>;
 

@@ -12,7 +12,12 @@ export default {
 			control: 'select',
 			options: Object.keys(InputTextSizes)
 		},
+		borderColor: { control: 'color' },
+		borderStyle: { control: 'text' },
+		placeholderColor: { control: 'color' },
 		focused: { control: 'boolean' },
+		isOutline: { control: 'boolean' },
+		display: { control: 'text' },
 		isError: { control: 'boolean' },
 		isDisabled: { control: 'boolean' },
 		fontSize: { control: 'text' },
@@ -37,7 +42,7 @@ export const Default: Story = {
 export const Disabled: Story = {
 	args: {
 		placeholder: 'Email',
-		isDisabled: true,
+		disabled: true,
 	},
 };
 

@@ -1,7 +1,6 @@
 import { StoryObj, Meta } from '@storybook/react';
 import InputText from '../../../components/InputText/InputText';
 import { InputTextSizes } from '../../../sizes/inputText';
-import Icon from '../../../../assets/icon.svg';
 
 export default {
 	title: 'Components/InputText/Icons',
